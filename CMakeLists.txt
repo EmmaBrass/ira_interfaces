@@ -8,12 +8,27 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
+# Define your custom messages
+set(msg_files
   "msg/ArmComplete.msg"
   "msg/GptComplete.msg"
   "msg/SystemState.msg"
   "msg/FoiCoord.msg"
+  "msg/CanvasImage.msg"
+)
+
+# Define your custom services
+set(srv_files
+  "srv/ReadyCheck.srv"
+)
+
+# Generate interfaces
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  ${srv_files} 
+  DEPENDENCIES sensor_msgs  # Declare sensor_msgs as a dependency here
  )
 
 if(BUILD_TESTING)
