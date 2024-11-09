@@ -17,6 +17,7 @@ set(msg_files
   "msg/SystemState.msg"
   "msg/FoiCoord.msg"
   "msg/CanvasImage.msg"
+  "msg/ArmPaintingComplete.msg"
 )
 
 # Define your custom services
